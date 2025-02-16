@@ -1,4 +1,8 @@
 export const ROUTES = {
+  LOGIN: {
+    name: 'Login',
+    path: '/login',
+  },
   SEARCH: {
     name: 'Search',
     path: '/search',

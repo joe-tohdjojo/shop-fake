@@ -27,7 +27,7 @@ async function login(values: FormSchema) {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to login');
+    throw new Error(response.statusText);
   }
 
   return await response.json();
@@ -43,5 +43,10 @@ export const useLogin = ({ onError, onSuccess }: Options) => {
     mutationFn: login,
     onSuccess,
     onError,
+    retry: (failureCount, error) => {
+      if (error.message === 'Bad Request') return false;
+      if (failureCount < 3) return true;
+      return false;
+    },
   });
 };

@@ -45,12 +45,17 @@ export function UserContextProvider({
   const { data, isFetching, error } = useQuery({
     queryKey: ['user'],
     queryFn: fetchCurrentUser,
-    retry: 1,
+    retry: (failureCount, error) => {
+      if (error.message === 'Unauthorized') return false;
+      if (failureCount < 3) return true;
+      return false;
+    },
   });
 
   const { mutate: logout } = useMutation({
     mutationFn: logoutUser,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['user'] }),
+    retry: () => false,
   });
 
   return (
