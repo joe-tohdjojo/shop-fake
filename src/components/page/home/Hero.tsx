@@ -21,7 +21,7 @@ export function Hero() {
             className="mr-4"
             size="lg"
           >
-            <Link href={ROUTES.SHOP.path}>
+            <Link href={`${ROUTES.SHOP.path}/category/all`}>
               Shop Now
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

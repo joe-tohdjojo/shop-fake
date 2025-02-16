@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Desktop } from '@/components/common/Navbar/Desktop';
-import { Mobile } from '@/components/common/Navbar/Mobile';
+import * as NavContent from '@/components/common/Navbar/NavContent';
 
 export const Navbar = () => {
   return (
@@ -19,10 +18,10 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <Desktop />
+          <NavContent.Desktop />
 
           {/* Mobile Menu Button */}
-          <Mobile />
+          <NavContent.Mobile />
         </div>
       </div>
     </nav>

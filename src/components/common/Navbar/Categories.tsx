@@ -5,10 +5,10 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
-import { fetchProductCategories } from '@/lib/fetchProductCategories';
 import { ROUTES } from '@/site-config';
+import { fetchProductCategories } from '@/lib/fetchProductCategories';
 
-async function Desktop() {
+export async function Desktop() {
   const { data: categories, error } = await fetchProductCategories();
 
   if (error) return <>Unable to fetch categories</>;
@@ -18,14 +18,14 @@ async function Desktop() {
       asChild
       key={category.slug}
     >
-      <Link href={`${ROUTES.CATEGORY.path}/${category.slug}`}>
+      <Link href={`${ROUTES.SHOP.path}/category/${category.slug}`}>
         {category.name}
       </Link>
     </NavigationMenuLink>
   ));
 }
 
-async function Mobile() {
+export async function Mobile() {
   const { data: categories, error } = await fetchProductCategories();
 
   if (error)
@@ -34,14 +34,10 @@ async function Mobile() {
   return categories?.map((category) => (
     <SidebarMenuSubItem key={category.slug}>
       <SidebarMenuSubButton asChild>
-        <Link href={`${ROUTES.CATEGORY.path}/${category.slug}`}>
+        <Link href={`${ROUTES.SHOP.path}/category/${category.slug}`}>
           {category.name}
         </Link>
       </SidebarMenuSubButton>
     </SidebarMenuSubItem>
   ));
 }
-export const Categories = {
-  Desktop,
-  Mobile,
-};

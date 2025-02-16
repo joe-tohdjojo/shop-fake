@@ -15,6 +15,6 @@ export const ROUTES = {
   },
   CATEGORY: {
     name: 'Category',
-    path: '/category',
+    path: '/categories',
   },
 };

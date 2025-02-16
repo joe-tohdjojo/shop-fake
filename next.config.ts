@@ -10,7 +10,19 @@ const nextConfig: NextConfig = {
         pathname: '/image/**',
         search: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.dummyjson.com',
+        port: '',
+        pathname: '/products/images/**',
+        search: '',
+      },
     ],
+  },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 };
 

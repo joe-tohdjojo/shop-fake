@@ -9,6 +9,7 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { searchSchema, SearchSchema } from '@/hooks/useSearch';
 import { ROUTES } from '@/site-config';
+import { QUERY_PARAMS } from '@/lib/constants';
 
 export function Search() {
   const router = useRouter();
@@ -19,9 +20,12 @@ export function Search() {
     },
   });
 
-  async function onSubmit(values: SearchSchema) {
-    router.push(`${ROUTES.SEARCH.path}?q=${values.search}`);
-  }
+  const onSubmit = (values: SearchSchema) => {
+    router.push(
+      `${ROUTES.SHOP.path}/category/all?${QUERY_PARAMS.SEARCH}=${values.search}`,
+    );
+  };
+
   return (
     <Form {...form}>
       <form

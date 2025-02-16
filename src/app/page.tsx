@@ -5,7 +5,7 @@ import { FeaturedProducts } from '@/components/page/home/FeaturedProducts';
 import { CategoriesPreview } from '@/components/page/home/CategoriesPreview';
 import { Newsletter } from '@/components/page/home/Newsletter';
 
-export default function LandingPage() {
+export default async function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

@@ -2,14 +2,12 @@ export const fetchProductCategories = async (): Promise<{
   data: Category[] | null;
   error: Error | null;
 }> => {
-  // INFO: Uncomment to mock 4 second delay
-  // await new Promise((resolve) => setTimeout(resolve, 4000));
+  // INFO: Uncomment to mock 10 second delay
+  // await new Promise((resolve) => setTimeout(resolve, 10000));
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/products/categories`,
-    {
-      next: { revalidate: 3600 },
-    },
+    { cache: 'force-cache', next: { revalidate: 3600 /* Every hour */ } },
   );
 
   if (!response.ok)
@@ -19,5 +17,6 @@ export const fetchProductCategories = async (): Promise<{
     };
 
   const data = await response.json();
+
   return { data, error: null };
 };

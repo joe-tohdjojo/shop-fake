@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Badge, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -20,25 +20,11 @@ import {
 import { fetchFeaturedProducts } from '@/lib/fetchFeaturedProducts';
 import { ROUTES } from '@/site-config';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Rating } from '@/components/common/Rating';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 // Rating component
-const Rating = ({ score }: { score: number }) => {
-  return (
-    <div className="flex items-center space-x-1">
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          className={`h-4 w-4 ${
-            i < Math.floor(score)
-              ? 'fill-yellow-400 text-yellow-400'
-              : 'text-gray-300'
-          }`}
-        />
-      ))}
-      <span className="ml-1 text-sm text-muted-foreground">{score}</span>
-    </div>
-  );
-};
 
 export async function FeaturedProducts() {
   const { data, error } = await fetchFeaturedProducts();
@@ -53,7 +39,7 @@ export async function FeaturedProducts() {
           asChild
           variant="ghost"
         >
-          <Link href={ROUTES.SHOP.routes.FEATURED.path}>
+          <Link href={ROUTES.SHOP.path}>
             View All
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
@@ -86,7 +72,14 @@ export async function FeaturedProducts() {
                     />
                   </AspectRatio>
                   {product.badge && (
-                    <Badge className="absolute right-4 top-4">
+                    <Badge
+                      className={cn('absolute right-4 top-4', {
+                        'bg-chart-2': product.badge === 'Eco-Friendly',
+                        'bg-chart-3': product.badge === 'Best Seller',
+                        'bg-chart-4 text-primary':
+                          product.badge === 'Top Rated',
+                      })}
+                    >
                       {product.badge}
                     </Badge>
                   )}

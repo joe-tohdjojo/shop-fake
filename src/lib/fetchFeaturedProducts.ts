@@ -2,6 +2,12 @@ interface Result {
   data: (Product & { badge: string })[] | null;
   error: Error | null;
 }
+
+const fetchOptions: RequestInit = {
+  next: { revalidate: 3600 },
+  cache: 'force-cache',
+};
+
 export const fetchFeaturedProducts = async (): Promise<Result> => {
   // INFO: Uncomment to mock 4 second delay
   // await new Promise((resolve) => setTimeout(resolve, 4000));
@@ -9,27 +15,19 @@ export const fetchFeaturedProducts = async (): Promise<Result> => {
   const responses = await Promise.all([
     fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/products/1?select=title,category,price,rating,thumbnail`,
-      {
-        next: { revalidate: 3600 },
-      },
+      fetchOptions,
     ),
     fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/products/20?select=title,category,price,rating,thumbnail`,
-      {
-        next: { revalidate: 3600 },
-      },
+      fetchOptions,
     ),
     fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/products/36?select=title,category,price,rating,thumbnail`,
-      {
-        next: { revalidate: 3600 },
-      },
+      fetchOptions,
     ),
     fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/products/49?select=title,category,price,rating,thumbnail`,
-      {
-        next: { revalidate: 3600 },
-      },
+      fetchOptions,
     ),
   ]);
 
