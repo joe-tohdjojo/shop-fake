@@ -17,15 +17,18 @@ import {
 import { ROUTES } from '@/site-config';
 import { formSchema, FormSchema, useLogin } from '@/hooks/useLogin';
 import { useToast } from '@/hooks/useToast';
+import { useQueryClient } from '@tanstack/react-query';
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'form'>) {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { toast } = useToast();
   const mutation = useLogin({
     onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ['user'] });
       router.push(`${ROUTES.SHOP.path}/category/all`);
     },
     onError(error) {

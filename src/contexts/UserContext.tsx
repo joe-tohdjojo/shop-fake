@@ -1,16 +1,30 @@
 'use client';
 
 import { createContext, useContext } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 const UserContext = createContext<{
   data?: User;
-  isFetching: boolean;
   error: Error | null;
+  isFetching: boolean;
+  logout?: () => void;
 }>({ isFetching: false, error: null });
 
 const fetchCurrentUser = async () => {
   const response = await fetch('/api/auth/me', {
+    method: 'GET',
+    credentials: 'include', // Include cookies (e.g., accessToken) in the request
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+const logoutUser = async () => {
+  const response = await fetch('/api/auth/logout', {
     method: 'GET',
     credentials: 'include', // Include cookies (e.g., accessToken) in the request
   });
@@ -27,14 +41,20 @@ export function UserContextProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const queryClient = useQueryClient();
   const { data, isFetching, error } = useQuery({
     queryKey: ['user'],
     queryFn: fetchCurrentUser,
     retry: 1,
   });
 
+  const { mutate: logout } = useMutation({
+    mutationFn: logoutUser,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['user'] }),
+  });
+
   return (
-    <UserContext.Provider value={{ data, isFetching, error }}>
+    <UserContext.Provider value={{ data, isFetching, error, logout }}>
       {children}
     </UserContext.Provider>
   );
