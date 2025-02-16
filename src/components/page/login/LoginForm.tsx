@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -23,16 +23,23 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'form'>) {
+  const searchParams = useSearchParams();
   const queryClient = useQueryClient();
   const router = useRouter();
   const { toast } = useToast();
   const mutation = useLogin({
     onSuccess() {
+      console.log(`@JT ~ searchParams:`, searchParams.get('redirect'));
       queryClient.invalidateQueries({ queryKey: ['user'] });
+      const redirect = searchParams.get('redirect');
+      if (redirect) {
+        return router.push(redirect);
+      }
       router.push(`${ROUTES.SHOP.path}/category/all`);
     },
     onError(error) {
       toast({
+        title: 'Something went wrong!',
         description: error.message,
       });
     },
