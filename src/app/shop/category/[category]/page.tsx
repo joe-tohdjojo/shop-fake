@@ -8,6 +8,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { fetchProductCategories } from '@/lib/fetchProductCategories';
 import { Metadata } from 'next';
 import { WithServerData } from '@/components/common/WithServerData';
+import { ROUTES } from '@/site-config';
 
 export async function getFilterParams(
   searchParamsPromise: SearchParams,
@@ -39,12 +40,12 @@ const ShopPage = async ({
   params: Params;
   searchParams: SearchParams;
 }) => {
-  const category = (await params).category;
+  const { category } = await params;
   const filters = await getFilterParams(searchParams);
 
   return (
     <div className="grid max-h-screen min-h-screen grid-rows-[65px_auto] overflow-y-scroll bg-background">
-      <Navbar />
+      <Navbar page={ROUTES.SHOP.name} />
 
       <div className="container mx-auto max-h-full px-4 py-8">
         <div className="flex flex-col gap-8 md:grid md:grid-cols-[225px_auto]">

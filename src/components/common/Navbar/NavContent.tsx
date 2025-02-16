@@ -26,37 +26,40 @@ import {
 import * as Categories from '@/components/common/Navbar/Categories';
 import { Suspense } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { AuthButton } from '@/components/common/AuthButton';
 
-export function Desktop() {
+export function Desktop({ page }: { page: string }) {
   return (
     <div className="hidden items-center space-x-6 md:flex">
-      <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <Button
-              asChild
-              variant="link"
-            >
-              <Link href={`${ROUTES.SHOP.path}/category/all`}>Shop</Link>
-            </Button>
-          </NavigationMenuItem>
+      {page !== ROUTES.SHOP.name && (
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <Button
+                asChild
+                variant="link"
+              >
+                <Link href={`${ROUTES.SHOP.path}/category/all`}>Shop</Link>
+              </Button>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <div className="grid w-[400px] gap-3 p-4 md:grid-cols-2">
-                <Suspense fallback={<>Loading...</>}>
-                  <Categories.Desktop />
-                </Suspense>
-              </div>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid w-[400px] gap-3 p-4 md:grid-cols-2">
+                  <Suspense fallback={<>Loading...</>}>
+                    <Categories.Desktop />
+                  </Suspense>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      )}
 
       <Search />
-      <Button>Login</Button>
       <ThemeToggle />
+      <AuthButton />
     </div>
   );
 }
@@ -64,7 +67,8 @@ export function Desktop() {
 export function Mobile() {
   return (
     <>
-      <div className="md:hidden">
+      <div className="flex gap-4 md:hidden">
+        <ThemeToggle />
         <SidebarProvider className="max-h-fit min-h-0">
           <SidebarTrigger />
           <Sidebar side="right">
@@ -76,6 +80,13 @@ export function Mobile() {
               </SidebarMenu>
             </SidebarHeader>
             <SidebarContent>
+              <SidebarGroup>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <AuthButton />
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroup>
               <SidebarGroup>
                 <SidebarMenu>
                   <SidebarMenuItem>

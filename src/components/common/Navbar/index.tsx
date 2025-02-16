@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import * as NavContent from '@/components/common/Navbar/NavContent';
 
-export const Navbar = () => {
+export const Navbar = async ({ page }: { page: string }) => {
   return (
     <nav className="sticky top-0 z-10 w-full border-b bg-background">
       <div className="container mx-auto px-4">
@@ -18,7 +18,7 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <NavContent.Desktop />
+          <NavContent.Desktop page={page} />
 
           {/* Mobile Menu Button */}
           <NavContent.Mobile />

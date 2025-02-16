@@ -26,7 +26,6 @@ import {
 import { SlidersHorizontal } from 'lucide-react';
 import { FILTER_TYPES, QUERY_PARAMS } from '@/lib/constants';
 import { ROUTES } from '@/site-config';
-import { initialProductFilterState as initialState } from '@/hooks';
 
 const SORT_BY = ['title', 'brand', 'category', 'price', 'rating'];
 
@@ -34,12 +33,11 @@ const getFilterParams = (
   searchParams: ReadonlyURLSearchParams,
 ): ProductFilters => {
   return {
-    page: Number(searchParams.get(QUERY_PARAMS.PAGE)) || initialState.page,
-    search: searchParams.get(QUERY_PARAMS.SEARCH) || initialState.search,
-    sortBy: searchParams.get(QUERY_PARAMS.SORT_BY) || initialState.sortBy,
+    page: parseInt(searchParams.get(QUERY_PARAMS.PAGE) || '1'),
+    search: searchParams.get(QUERY_PARAMS.SEARCH) || '',
+    sortBy: searchParams.get(QUERY_PARAMS.SORT_BY) || 'title',
     sortOrder:
-      (searchParams.get(QUERY_PARAMS.SORT_ORDER) as 'asc' | 'desc') ||
-      initialState.sortOrder,
+      (searchParams.get(QUERY_PARAMS.SORT_ORDER) as 'asc' | 'desc') || 'asc',
   };
 };
 
