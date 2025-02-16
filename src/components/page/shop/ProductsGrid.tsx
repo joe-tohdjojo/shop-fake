@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { fetchProducts } from '@/lib/fetchProducts';
 import { FILTER_TYPES } from '@/lib/constants';
@@ -12,6 +13,7 @@ import {
 import { Rating } from '@/components/common/Rating';
 import { Button } from '@/components/ui/button';
 import { Pagination } from '@/components/common/Pagination';
+import { ROUTES } from '@/site-config';
 
 export async function ProductsGrid({
   category,
@@ -52,9 +54,19 @@ export async function ProductsGrid({
   return (
     <>
       {filters.search && (
-        <div className="mb-8">
-          Showing search results for{' '}
-          <span className="font-bold">{filters.search}</span>:
+        <div className="mb-8 flex flex-col gap-2">
+          <p>
+            Showing search results for{' '}
+            <span className="font-bold">{filters.search}</span>:
+          </p>
+          <Button
+            asChild
+            className="w-fit"
+            size="sm"
+            variant="outline"
+          >
+            <Link href={`${ROUTES.SHOP.path}/category/all`}>Clear search</Link>
+          </Button>
         </div>
       )}
       <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

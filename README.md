@@ -109,6 +109,7 @@ All main content sections are server-side rendered for optimal performance:
 The shop page (`/shop`) provides a rich e-commerce browsing experience with the following features:
 
 #### Advanced Filtering and Sorting
+
 - **Filter Panel**: Allows users to filter products by category
 - **Sorting Options**: Products can be sorted by:
   - Title
@@ -120,11 +121,13 @@ The shop page (`/shop`) provides a rich e-commerce browsing experience with the 
 - **URL-based State**: Filter and sort preferences are preserved in URL parameters for shareable links
 
 #### Server-Side Product Loading
+
 - Products are fetched server-side through the `ProductsGrid` component
 - Utilizes Next.js's built-in caching with `cache: 'force-cache'` for optimal performance
 - Pagination support for handling large product sets
 
 #### Shopping Cart Integration
+
 - Cart status visible in the navigation bar
 - Displays real-time item count for logged-in users
 - Direct navigation to cart page
@@ -163,14 +166,14 @@ The login page implements a secure authentication flow with modern form handling
 
 The project implements internal API endpoints (`/api/auth/login` and `/api/auth/me`) instead of directly accessing the DummyJSON API from the client for several important reasons:
 
-#### Security and Control
+### Security and Control
 
 - Complete control over authentication flow and token management
 - Server-side implementation of security measures and token refresh logic
 - Ability to sanitize and transform response data before client consumption
 - Keeping sensitive operations server-side where they belong
 
-#### Cookie Management
+### Cookie Management
 
 - DummyJSON's Set-Cookie headers lack `Domain` and `SameSite` attributes, which creates several limitations:
 
@@ -187,14 +190,14 @@ The project implements internal API endpoints (`/api/auth/login` and `/api/auth/
   - Ensuring cookies are accessible within our application's context
   - Maintaining proper security with `httpOnly`, `secure`, and `sameSite=strict` flags
 
-#### API Evolution and Abstraction
+### API Evolution and Abstraction
 
 - Creates a clean abstraction layer between frontend and external services
 - Simplifies future migration from DummyJSON to production APIs
 - Enables adding features like caching or rate limiting without client changes
 - Follows Backend-for-Frontend (BFF) pattern for optimal frontend-backend integration
 
-#### Cross-Origin Considerations
+### Cross-Origin Considerations
 
 - Eliminates CORS concerns by keeping requests same-origin
 - Removes need for complex CORS configuration

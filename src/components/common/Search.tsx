@@ -21,6 +21,7 @@ export function Search() {
   });
 
   const onSubmit = (values: SearchSchema) => {
+    form.setValue('search', '');
     router.push(
       `${ROUTES.SHOP.path}/category/all?${QUERY_PARAMS.SEARCH}=${values.search}`,
     );
