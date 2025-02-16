@@ -8,7 +8,7 @@ import { Newsletter } from '@/components/page/home/Newsletter';
 export default async function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar page={'home'} />
 
       {/* Hero Section */}
       <Hero />

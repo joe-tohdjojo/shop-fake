@@ -4,7 +4,6 @@ export async function GET(request: NextRequest) {
   try {
     // Get tokens from cookies
     const accessToken = request.cookies.get('accessToken')?.value;
-    console.log(`@JT ~ GET ~ accessToken:`, accessToken);
 
     // Forward credentials to external API
     const response = await fetch(
@@ -19,7 +18,6 @@ export async function GET(request: NextRequest) {
 
     // Get response data
     const data = await response.json();
-    console.log(`@JT ~ GET ~ data:`, data);
 
     if (!response.ok) {
       if (data.message === 'Invalid/Expired Token!') {

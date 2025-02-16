@@ -17,7 +17,7 @@ export async function getFilterParams(
   return {
     page: Number(searchParams[QUERY_PARAMS.PAGE]) || 1,
     search: searchParams[QUERY_PARAMS.SEARCH] || '',
-    sortBy: searchParams[QUERY_PARAMS.SORT_BY] || 'brand',
+    sortBy: searchParams[QUERY_PARAMS.SORT_BY] || 'title',
     sortOrder:
       (searchParams[QUERY_PARAMS.SORT_ORDER] as 'asc' | 'desc') || 'asc',
   };

@@ -27,6 +27,7 @@ import * as Categories from '@/components/common/Navbar/Categories';
 import { Suspense } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { AuthButton } from '@/components/common/AuthButton';
+import { CartButton } from '@/components/page/shop/CartButton';
 
 export function Desktop({ page }: { page: string }) {
   return (
@@ -59,6 +60,7 @@ export function Desktop({ page }: { page: string }) {
 
       <Search />
       <ThemeToggle />
+      {page === ROUTES.SHOP.name && <CartButton />}
       <AuthButton />
     </div>
   );

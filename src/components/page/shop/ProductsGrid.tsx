@@ -74,12 +74,12 @@ export async function ProductsGrid({
               />
             </CardHeader>
             <CardContent className="flex-1 p-6">
+              <CardTitle className="mb-2">{product.title}</CardTitle>
               <div className="mb-2">
                 <span className="text-sm text-muted-foreground">
                   {product.brand}
                 </span>
               </div>
-              <CardTitle className="mb-2">{product.title}</CardTitle>
               <p className="mb-2 text-sm text-muted-foreground">
                 {product.description}
               </p>
