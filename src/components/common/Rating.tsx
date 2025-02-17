@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react';
 
-export const Rating = ({ score }: { score: number }) => {
+export const Rating = ({ score, count }: { score: number; count?: number }) => {
   return (
     <div className="flex items-center space-x-1">
       {[...Array(5)].map((_, i) => (
@@ -13,7 +13,10 @@ export const Rating = ({ score }: { score: number }) => {
           }`}
         />
       ))}
-      <span className="ml-1 text-sm text-muted-foreground">{score}</span>
+      <span className="ml-1 text-sm text-muted-foreground">
+        {score}
+        {count && <> {count} reviews</>}
+      </span>
     </div>
   );
 };

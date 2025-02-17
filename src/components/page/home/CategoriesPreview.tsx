@@ -1,10 +1,10 @@
+import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Image from 'next/image';
 import { AspectRatio } from '@radix-ui/react-aspect-ratio';
-import Link from 'next/link';
 import { ROUTES } from '@/site-config';
 import { fetchProductCategories } from '@/lib/fetchProductCategories';
 
@@ -21,11 +21,11 @@ export async function CategoriesPreview() {
               key={category.slug}
               className="group cursor-pointer transition-shadow hover:shadow-lg"
             >
-              <Link href={category.slug}>
+              <Link href={`${ROUTES.SHOP.path}/category/${category.slug}`}>
                 <CardHeader>
                   <AspectRatio ratio={1 / 1}>
                     <Image
-                      src="https://dummyjson.com/image/300x300"
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/image/300x300`}
                       alt={category.name}
                       className="h-full w-full rounded-t-lg object-cover"
                       width={300}
@@ -45,7 +45,7 @@ export async function CategoriesPreview() {
             asChild
             size="lg"
           >
-            <Link href={ROUTES.CATEGORY.path}>
+            <Link href={`${ROUTES.SHOP.path}/category/all`}>
               Explore All Categories
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

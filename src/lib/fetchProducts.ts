@@ -41,8 +41,9 @@ export const fetchProducts = async ({
   skip: number;
   total: number;
 }> => {
-  // INFO: Uncomment to mock 4 second delay
-  // await new Promise((resolve) => setTimeout(resolve, 4000));
+  // INFO: Uncomment to mock 10 second delay
+  // await new Promise((resolve) => setTimeout(resolve, 10000));
+
   const {
     category,
     order = 'asc',

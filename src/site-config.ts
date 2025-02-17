@@ -1,7 +1,15 @@
 export const ROUTES = {
+  CART: {
+    name: 'Cart',
+    path: '/cart',
+  },
   LOGIN: {
     name: 'Login',
     path: '/login',
+  },
+  PRODUCT: {
+    name: 'Product',
+    path: '/shop/product',
   },
   SEARCH: {
     name: 'Search',
@@ -10,15 +18,5 @@ export const ROUTES = {
   SHOP: {
     name: 'Shop',
     path: '/shop',
-    routes: {
-      FEATURED: {
-        name: 'Featured Products',
-        path: '/shop/featured',
-      },
-    },
-  },
-  CATEGORY: {
-    name: 'Category',
-    path: '/categories',
   },
 };

@@ -14,7 +14,7 @@ import { Rating } from '@/components/common/Rating';
 import { Button } from '@/components/ui/button';
 import { Pagination } from '@/components/common/Pagination';
 import { ROUTES } from '@/site-config';
-import { AddToCartButton } from './AddToCartButton';
+import { AddToCartButton } from '@/components/page/shop/AddToCartButton';
 
 export async function ProductsGrid({
   category,
@@ -115,6 +115,7 @@ export async function ProductsGrid({
             <CardFooter>
               <AddToCartButton
                 productId={product.id}
+                productTitle={product.title}
                 stock={product.stock}
               />
             </CardFooter>

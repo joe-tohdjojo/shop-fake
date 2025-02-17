@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { Metadata } from 'next';
 
 import { ProductsGrid } from '@/components/page/shop/ProductsGrid';
 import { QUERY_PARAMS } from '@/lib/constants';
@@ -6,9 +7,9 @@ import { Navbar } from '@/components/common/Navbar';
 import * as FilterPanel from '@/components/page/shop/FilterPanel';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { fetchProductCategories } from '@/lib/fetchProductCategories';
-import { Metadata } from 'next';
 import { WithServerData } from '@/components/common/WithServerData';
 import { ROUTES } from '@/site-config';
+import { ProductsGridSkeleton } from '@/components/page/shop/ProductsGridSkeleton';
 
 export async function getFilterParams(
   searchParamsPromise: SearchParams,
@@ -77,10 +78,12 @@ const ShopPage = async ({
 
           <ScrollArea className="h-full">
             <main className="flex-1">
-              <ProductsGrid
-                category={category}
-                filters={filters}
-              />
+              <Suspense fallback={<ProductsGridSkeleton />}>
+                <ProductsGrid
+                  category={category}
+                  filters={filters}
+                />
+              </Suspense>
             </main>
           </ScrollArea>
         </div>

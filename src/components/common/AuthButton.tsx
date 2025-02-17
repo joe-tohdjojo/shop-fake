@@ -8,9 +8,9 @@ import { useUser } from '@/contexts/UserContext';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { DropdownMenuItem } from '@radix-ui/react-dropdown-menu';
 
 export function AuthButton() {
   const { data, isFetching, error, logout } = useUser();

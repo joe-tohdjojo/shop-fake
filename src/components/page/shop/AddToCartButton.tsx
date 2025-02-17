@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { useUser } from '@/contexts/UserContext';
 import { useCart } from '@/hooks/useCart';
+import { useToast } from '@/hooks/useToast';
 import { ROUTES } from '@/site-config';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
@@ -36,12 +37,15 @@ const addCart = async ({
 
 export function AddToCartButton({
   productId,
+  productTitle,
   stock,
 }: {
   productId: number;
+  productTitle: string;
   stock: number;
 }) {
   const router = useRouter();
+  const { toast } = useToast();
   const queryClient = useQueryClient();
   const { data: user } = useUser();
   const { data: cart } = useCart();
@@ -81,6 +85,9 @@ export function AddToCartButton({
           data.products[data.products.length - 1],
         ];
         return newData;
+      });
+      toast({
+        title: `${productTitle} has been added to your cart`,
       });
     },
   });

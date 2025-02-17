@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Navbar } from '@/components/common/Navbar';
 import { Hero } from '@/components/page/home/Hero';
 import { FeaturedProducts } from '@/components/page/home/FeaturedProducts';
+import { FeaturedProductsSkeleton } from '@/components/page/home/FeaturedProductsSkeleton';
 import { CategoriesPreview } from '@/components/page/home/CategoriesPreview';
+import { CategoriesPreviewSkeleton } from '@/components/page/home/CategoriesPreviewSkeleton';
 import { Newsletter } from '@/components/page/home/Newsletter';
 
 export default async function LandingPage() {
@@ -14,10 +16,14 @@ export default async function LandingPage() {
       <Hero />
 
       {/* Featured Products Section */}
-      <FeaturedProducts />
+      <Suspense fallback={<FeaturedProductsSkeleton />}>
+        <FeaturedProducts />
+      </Suspense>
 
       {/* Categories Preview Section */}
-      <CategoriesPreview />
+      <Suspense fallback={<CategoriesPreviewSkeleton />}>
+        <CategoriesPreview />
+      </Suspense>
 
       {/* Newsletter Section */}
       <Newsletter />

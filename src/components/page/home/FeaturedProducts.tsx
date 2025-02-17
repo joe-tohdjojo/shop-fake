@@ -39,7 +39,7 @@ export async function FeaturedProducts() {
           asChild
           variant="ghost"
         >
-          <Link href={ROUTES.SHOP.path}>
+          <Link href={`${ROUTES.SHOP.path}/shop/category/all`}>
             View All
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>

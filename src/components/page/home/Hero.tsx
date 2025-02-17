@@ -31,7 +31,9 @@ export function Hero() {
             size="lg"
             variant="outline"
           >
-            <Link href={ROUTES.CATEGORY.path}>View Categories</Link>
+            <Link href={`${ROUTES.SHOP.path}/category/all`}>
+              View Categories
+            </Link>
           </Button>
         </div>
       </div>

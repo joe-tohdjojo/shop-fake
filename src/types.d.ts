@@ -7,28 +7,29 @@ type Review = {
 };
 
 type Product = {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  tags: string[];
-  thumbnail: string;
+  availabilityStatus: string;
   brand: string;
-  sku: string;
-  weight: number;
+  category: string;
+  description: string;
   dimensions: {
     width: number;
     height: number;
     depth: number;
   };
-  warrantyInformation: string;
-  shippingInformation: string;
-  availabilityStatus: string;
+  discountPercentage: number;
+  id: number;
+  images: string[];
+  price: number;
+  rating: number;
   reviews: Review[];
+  shippingInformation: string;
+  sku: string;
+  stock: number;
+  tags: string[];
+  thumbnail: string;
+  title: string;
+  warrantyInformation: string;
+  weight: number;
 };
 
 type Category = {

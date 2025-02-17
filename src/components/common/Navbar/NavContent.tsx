@@ -100,8 +100,8 @@ export function Mobile() {
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
-                      <Link href={ROUTES.CATEGORY.path}>
-                        {ROUTES.CATEGORY.name}
+                      <Link href={`${ROUTES.SHOP.path}/category/all`}>
+                        Category
                       </Link>
                     </SidebarMenuButton>
                     <SidebarMenuSub>

@@ -14,7 +14,7 @@ export const fetchFeaturedProducts = async (): Promise<Result> => {
 
   const responses = await Promise.all([
     fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/products/1?select=title,category,price,rating,thumbnail`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/products/50?select=title,category,price,rating,thumbnail`,
       fetchOptions,
     ),
     fetch(
