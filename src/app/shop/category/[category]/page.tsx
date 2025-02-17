@@ -11,7 +11,7 @@ import { WithServerData } from '@/components/common/WithServerData';
 import { ROUTES } from '@/site-config';
 import { ProductsGridSkeleton } from '@/components/page/shop/ProductsGridSkeleton';
 
-export async function getFilterParams(
+async function getFilterParams(
   searchParamsPromise: SearchParams,
 ): Promise<ProductFilters> {
   const searchParams = await searchParamsPromise;
