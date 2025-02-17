@@ -29,7 +29,6 @@ export function LoginForm({
   const { toast } = useToast();
   const mutation = useLogin({
     onSuccess() {
-      console.log(`@JT ~ searchParams:`, searchParams.get('redirect'));
       queryClient.invalidateQueries({ queryKey: ['user'] });
       const redirect = searchParams.get('redirect');
       if (redirect) {
