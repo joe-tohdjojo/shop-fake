@@ -98,3 +98,13 @@ type User = {
   username: string;
   weight: number;
 };
+
+type Cart = {
+  discountedTotal: number;
+  id: number;
+  products: Product[];
+  total: number;
+  totalProducts: number;
+  totalQuantity: number;
+  userId: number;
+};

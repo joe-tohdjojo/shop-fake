@@ -14,6 +14,7 @@ import { Rating } from '@/components/common/Rating';
 import { Button } from '@/components/ui/button';
 import { Pagination } from '@/components/common/Pagination';
 import { ROUTES } from '@/site-config';
+import { AddToCartButton } from './AddToCartButton';
 
 export async function ProductsGrid({
   category,
@@ -112,12 +113,10 @@ export async function ProductsGrid({
               </div>
             </CardContent>
             <CardFooter>
-              <Button
-                className="w-full"
-                disabled={product.stock === 0}
-              >
-                {product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
-              </Button>
+              <AddToCartButton
+                productId={product.id}
+                stock={product.stock}
+              />
             </CardFooter>
           </Card>
         ))}

@@ -54,7 +54,7 @@ export function UserContextProvider({
 
   const { mutate: logout } = useMutation({
     mutationFn: logoutUser,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['user'] }),
+    onSuccess: () => queryClient.setQueryData(['user'], null),
     retry: () => false,
   });
 
