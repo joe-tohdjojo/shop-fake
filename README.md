@@ -133,6 +133,50 @@ The shop page (`/shop`) provides a rich e-commerce browsing experience with the 
 - Direct navigation to cart page
 - Persistent cart state across sessions
 
+#### Product Page
+
+The product page (`/shop/product/[productId]`) is currently implemented as a placeholder with limited functionality:
+
+- **Product Display**: Shows product details including images, title, description, and price
+- **Add to Cart**: The "Add to Cart" functionality is currently a placeholder that:
+  - Does not persist data to any database
+  - Will be updated in future iterations to make requests to a mock server
+  - Cart data will not persist when navigating away or refreshing the page
+  - Serves as a demonstration of the intended user interface
+
+Future plans include implementing a temporary cart storage solution that will:
+
+- Handle cart operations through client-side state management
+- Simulate API requests to a mock server
+- Provide feedback on cart operations
+- Reset on page refresh or navigation (by design)
+
+#### Cart Page
+
+The cart page (`/cart`) demonstrates client-side state management with limited persistence:
+
+- **State Management**:
+  - Uses React's `useReducer` for local state management
+  - Handles cart items, promo codes, and order summary
+  - Simulates data fetching with mock cart items
+  - All state is reset on page refresh
+
+- **Features**:
+  - Cart item quantity adjustment
+  - Item removal
+  - Promo code application (mock functionality)
+  - Order summary calculation
+  - Empty cart state handling
+
+- **Components**:
+  - `PageDataWrapper`: Simulates async data fetching
+  - `WithCartState`: Client-side state container using `useReducer`
+  - `CartItems`: Manages item display and interactions
+  - `PromoCode`: Handles promo code input
+  - `OrderSummary`: Displays order totals
+
+Note: Like the product page, the cart functionality is currently limited to client-side state and does not persist data. Future implementations will include server-side state management and data persistence.
+
 ### Login Page
 
 The login page implements a secure authentication flow with modern form handling and validation. You can use any user's credentials from dummyjson.com/users.
