@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
+        body: JSON.stringify({ ...body, expiresInMins: 1 }),
       },
     );
 
@@ -37,13 +37,24 @@ export async function POST(request: NextRequest) {
       sameSite: 'lax',
     });
 
+    const expiresInMins = 604800;
     newResponse.cookies.set({
       name: 'refreshToken',
       value: refreshToken,
       httpOnly: true,
       secure: true,
       path: '/',
-      maxAge: 604800, // 1 week
+      maxAge: expiresInMins, // 1 week
+      sameSite: 'lax',
+    });
+
+    newResponse.cookies.set({
+      name: 'refreshTokenExpiry',
+      value: new Date(Date.now() + expiresInMins * 1000).toISOString(),
+      httpOnly: true,
+      secure: true,
+      path: '/',
+      maxAge: expiresInMins, // 1 week
       sameSite: 'lax',
     });
 

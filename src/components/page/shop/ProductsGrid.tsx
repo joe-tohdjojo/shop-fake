@@ -77,39 +77,53 @@ export async function ProductsGrid({
             className="flex flex-col"
           >
             <CardHeader className="relative p-2">
-              <Image
-                alt={product.title}
-                className="h-48 w-full rounded-t-lg object-cover"
-                height={300}
-                src={product.thumbnail}
-                unoptimized
-                width={300}
-              />
+              <Link href={`/shop/product/${product.id}`}>
+                <Image
+                  alt={product.title}
+                  className="h-48 w-full rounded-t-lg object-cover"
+                  height={300}
+                  src={product.thumbnail}
+                  unoptimized
+                  width={300}
+                />
+              </Link>
             </CardHeader>
             <CardContent className="flex-1 p-6">
-              <CardTitle className="mb-2">{product.title}</CardTitle>
+              <CardTitle className="mb-2">
+                <Link href={`/shop/product/${product.id}`}>
+                  {product.title}
+                </Link>
+              </CardTitle>
               <div className="mb-2">
-                <span className="text-sm text-muted-foreground">
-                  {product.brand}
-                </span>
+                <Link href={`/shop/product/${product.id}`}>
+                  <span className="text-sm text-muted-foreground">
+                    {product.brand}
+                  </span>
+                </Link>
               </div>
-              <p className="mb-2 text-sm text-muted-foreground">
-                {product.description}
-              </p>
+              <Link href={`/shop/product/${product.id}`}>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  {product.description}
+                </p>
+              </Link>
               <Rating score={product.rating} />
               <div className="mt-4">
-                <span className="text-xl font-bold">
-                  ${product.price.toFixed(2)}
-                </span>
-                <span className="ml-2 text-sm text-muted-foreground">
-                  {product.stock} in stock
-                </span>
+                <Link href={`/shop/product/${product.id}`}>
+                  <span className="text-xl font-bold">
+                    ${product.price.toFixed(2)}
+                  </span>
+                  <span className="ml-2 text-sm text-muted-foreground">
+                    {product.stock} in stock
+                  </span>
+                </Link>
               </div>
               <div className="mt-2">
-                <span className="text-sm text-muted-foreground">
-                  {product.category[0].toUpperCase() +
-                    product.category.slice(1)}
-                </span>
+                <Link href={`/shop/product/${product.id}`}>
+                  <span className="text-sm text-muted-foreground">
+                    {product.category[0].toUpperCase() +
+                      product.category.slice(1)}
+                  </span>
+                </Link>
               </div>
             </CardContent>
             <CardFooter>
