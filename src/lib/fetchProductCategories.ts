@@ -7,7 +7,7 @@ export const fetchProductCategories = async (): Promise<{
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/products/categories`,
-    { cache: 'force-cache', next: { revalidate: 3600 /* Every hour */ } },
+    { cache: 'force-cache' },
   );
 
   if (!response.ok)

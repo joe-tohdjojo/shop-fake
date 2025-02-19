@@ -48,7 +48,9 @@ export function Desktop({ page }: { page: string }) {
               <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="grid w-[400px] gap-3 p-4 md:grid-cols-2">
-                  <Suspense fallback={<>Loading...</>}>
+                  <Suspense
+                    fallback={<div className="text-primary">Loading...</div>}
+                  >
                     <Categories.Desktop />
                   </Suspense>
                 </div>

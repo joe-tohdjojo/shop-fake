@@ -27,10 +27,7 @@ interface Options {
   };
 }
 
-const fetchOptions: RequestInit = {
-  next: { revalidate: 3600 /* Every hour */ },
-  cache: 'force-cache',
-};
+const fetchOptions: RequestInit = { cache: 'force-cache' };
 
 export const fetchProducts = async ({
   filter = {},
