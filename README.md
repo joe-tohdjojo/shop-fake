@@ -2,6 +2,8 @@
 
 A modern, production-ready e-commerce platform built with Next.js 15 and the latest web technologies. This project demonstrates best practices in modern web development, from architecture to deployment.
 
+Read all about it in my blog: [https://www.joetohdjojo.com/blog/shop-fake](https://www.joetohdjojo.com/blog/shop-fake)
+
 ## Tech Stack
 
 - **Framework**: Next.js
@@ -156,12 +158,14 @@ Future plans include implementing a temporary cart storage solution that will:
 The cart page (`/cart`) demonstrates client-side state management with limited persistence:
 
 - **State Management**:
+
   - Uses React's `useReducer` for local state management
   - Handles cart items, promo codes, and order summary
   - Simulates data fetching with mock cart items
   - All state is reset on page refresh
 
 - **Features**:
+
   - Cart item quantity adjustment
   - Item removal
   - Promo code application (mock functionality)

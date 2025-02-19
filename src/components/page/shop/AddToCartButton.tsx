@@ -52,6 +52,7 @@ export function AddToCartButton({
   const { mutate } = useMutation({
     mutationKey: ['addToCart', productId],
     mutationFn: () => {
+      // Check if the user has a cart. If not, create a new one and add the product to it.
       if (!cart) {
         return addCart({
           products: [{ id: productId, quantity: 1 }],
