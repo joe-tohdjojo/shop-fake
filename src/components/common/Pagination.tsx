@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/pagination';
 import { QUERY_PARAMS } from '@/lib/constants';
 import { ROUTES } from '@/site-config';
+import { notFound } from 'next/navigation';
 
 const generateQueryString = (filters: ProductFilters) => {
   return `?${QUERY_PARAMS.PAGE}=${filters.page}&${QUERY_PARAMS.SORT_BY}=${filters.sortBy}&${QUERY_PARAMS.SORT_ORDER}=${filters.sortOrder}`;
@@ -23,6 +24,8 @@ export function Pagination({
   totalProducts?: number;
 }) {
   const totalPages = totalProducts ? Math.ceil(totalProducts / 24) : 500;
+
+  if (filters.page > totalPages) return notFound();
 
   return (
     <P className="mx-0">
