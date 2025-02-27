@@ -39,12 +39,12 @@ export const RelatedProducts = () => {
           <Card key={related.id}>
             <CardHeader className="p-0">
               <Image
-                src={`${process.env.NEXT_PUBLIC_BASE_URL}${related.image}`}
                 alt={related.name}
                 className="h-48 w-full rounded-t-lg object-cover"
+                height={250}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL}${related.image}`}
                 unoptimized
                 width={250}
-                height={250}
               />
             </CardHeader>
             <CardContent className="p-4">

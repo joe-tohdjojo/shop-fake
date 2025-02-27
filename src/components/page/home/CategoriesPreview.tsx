@@ -25,11 +25,12 @@ export async function CategoriesPreview() {
                 <CardHeader>
                   <AspectRatio ratio={1 / 1}>
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/image/300x300`}
                       alt={category.name}
                       className="h-full w-full rounded-t-lg object-cover"
-                      width={300}
                       height={300}
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/image/300x300`}
+                      unoptimized
+                      width={300}
                     />
                   </AspectRatio>
                 </CardHeader>

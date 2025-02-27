@@ -65,10 +65,10 @@ export async function FeaturedProducts() {
                     <Image
                       alt={product.title}
                       className="h-full w-full rounded-t-lg object-cover"
-                      src={product.thumbnail}
-                      width={300}
                       height={300}
+                      src={product.thumbnail}
                       unoptimized
+                      width={300}
                     />
                   </AspectRatio>
                   {product.badge && (
